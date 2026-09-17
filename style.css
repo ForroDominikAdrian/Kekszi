@@ -2,12 +2,14 @@ body {
     background-color: antiquewhite;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    color: #333;
 }
 
 header {
     background-color: burlywood;
     border-bottom: 2px solid rgb(228, 168, 89);
     height: 100px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
 }
 
 .btn-custom {
@@ -15,14 +17,100 @@ header {
     border: 2px solid rgb(228, 168, 89);
     color: rgb(228, 168, 89);
     font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s ease;
 }
 
 .btn-custom:hover {
     background-color: rgb(228, 168, 89);
     color: antiquewhite;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
 
-footer {
+.lablec {
+    background-color: burlywood;
+    color: antiquewhite;
     text-align: center;
-    padding: 20px 0;
+    padding: 22px 20px;
+    margin-top: 40px;
+    font-size: 15px;
+    border-top: 2px solid rgb(228, 168, 89);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+
 }
+
+.apro {
+    font-size: 13px;
+    color: #ffffff;
+}
+
+.kontakt {
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.kontakt-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid rgb(228, 168, 89);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+}
+
+.kontakt-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: rgb(180, 115, 35);
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid rgb(228, 168, 89);
+    border-radius: 6px;
+    background-color: #fafafa;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: rgb(180, 115, 35);
+    box-shadow: 0 0 6px rgba(228, 168, 89, 0.4);
+    background-color: #ffffff;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.kontakt .btn-custom {
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+}
+
