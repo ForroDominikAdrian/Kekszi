@@ -10,6 +10,8 @@ header {
     border-bottom: 2px solid rgb(228, 168, 89);
     height: 100px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+    Position:sticky;
+    top:0;
 }
 
 .btn-custom {
@@ -39,7 +41,7 @@ header {
     font-size: 15px;
     border-top: 2px solid rgb(228, 168, 89);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
-
+    
 }
 
 .apro {
@@ -114,3 +116,9 @@ header {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
 }
 
+.milan{
+    margin-bottom: 17px;
+}
+#milan{
+    margin-top: 6.7px;
+}
