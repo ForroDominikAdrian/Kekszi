@@ -1,28 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const valasztottSzolgaltatas = urlParams.get('szolgaltatas');
+    // Itt a valasztottKod változóba mentjük az értéket
+    const valasztottKod = urlParams.get('szolgaltatas');
 
-    /* Placeholder variable-ök a Quary könnyű megállapításához*/
-    string p1 = "AI-Alapú Szoftverfejlesztés & AI Transzformáció"
-    string p2 = "Forráskód Elemzés"
-    string p3 = "Cross-Platform Mobilalkalmazás-Fejlesztés"
-    string p4 = "Android Alkalmazásfejlesztés"
-    string p5 = "iOS Mobilalkalmazás-Fejlesztés"
-    string p6 = "Komplex Mobilalkalmazás-Fejlesztés"
-    string p7 = "Egyedi Szoftverfejlesztés"
-    string p8 = "IT Projektmenedzsment"
-    string p9 = "Minőségbiztosítás és Tesztelés"
-    string p10 = "Szoftverfejlesztési Feltáró Fázis"
-    string p11 = "IT Audit & Tanácsadás"
-    string p12 = "UX/UI Tervezési Szolgáltatások"
-    
+    const szolgaltatasok = {
+        p1: "AI-Alapú Szoftverfejlesztés & AI Transzformáció",
+        p2: "Forráskód Elemzés",
+        p3: "Cross-Platform Mobilalkalmazás-Fejlesztés",
+        p4: "Android Alkalmazásfejlesztés",
+        p5: "iOS Mobilalkalmazás-Fejlesztés",
+        p6: "Komplex Mobilalkalmazás-Fejlesztés",
+        p7: "Egyedi Szoftverfejlesztés",
+        p8: "IT Projektmenedzsment",
+        p9: "Minőségbiztosítás és Tesztelés",
+        p10: "Szoftverfejlesztési Feltáró Fázis",
+        p11: "IT Audit & Tanácsadás",
+        p12: "UX/UI Tervezési Szolgáltatások"
+    };
 
-
-    if (valasztottSzolgaltatas) {
+    // Itt is a valasztottKod-ot vizsgáljuk
+    if (valasztottKod) {
         const inputMezo = document.getElementById('szolgaltatasInput');
         if (inputMezo) {
-            inputMezo.value = valasztottSzolgaltatas;
-            
+            inputMezo.value = szolgaltatasok[valasztottKod] || valasztottKod;
         }
     }
 });
