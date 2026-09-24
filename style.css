@@ -87,6 +87,20 @@ header {
     font-size: 14px;
 }
 
+.btn-keksz {
+    background-color: #deb887;
+    color: #3d2314;
+    font-weight: 600;
+    border: none;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+}
+
+.btn-keksz:hover {
+    background-color: #c9a273;
+    color: #21120a;
+    transform: translateY(-2px);
+}
+
 .form-group input,
 .form-group textarea {
     padding: 10px 12px;

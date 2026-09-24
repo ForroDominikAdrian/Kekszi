@@ -1,0 +1,148 @@
+        html, body {
+            height: 100%;
+        }
+
+        /* 1. FLEXBOX AZ EGÉSZ OLDALRA A RÖGZÍTÉSHEZ */
+        body {
+            background-color: antiquewhite;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Teljes képernyőmagasság */
+        }
+
+        header {
+            background-color: burlywood;
+            border-bottom: 2px solid rgb(228, 168, 89);
+            height: 100px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .btn-custom {
+            background-color: antiquewhite;
+            border: 2px solid rgb(228, 168, 89);
+            color: rgb(228, 168, 89);
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            background-color: rgb(228, 168, 89);
+            color: antiquewhite;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+        }
+
+        /* --- FÜLEK (BEJELENTKEZÉS / REGISZTRÁCIÓ GOMBOK) STÍLUSA --- */
+        .nav-pills .nav-link {
+            background-color: antiquewhite;
+            border: 2px solid rgb(228, 168, 89);
+            color: rgb(180, 115, 35);
+            font-weight: bold;
+            border-radius: 6px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            margin: 0 4px;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: rgb(228, 168, 89);
+            color: antiquewhite;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: rgb(228, 168, 89) !important;
+            color: antiquewhite !important;
+            border-color: rgb(228, 168, 89) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 2. KÖZÉPSŐ RÉSZ: KITÖLTI A MARADÉK HELYET */
+        .kontakt {
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            flex: 1; /* Ez tolja le a footert az oldal aljára */
+        }
+
+        .kontakt-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid rgb(228, 168, 89);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .kontakt-container h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: rgb(180, 115, 35);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            padding: 10px 12px;
+            border: 1px solid rgb(228, 168, 89);
+            border-radius: 6px;
+            background-color: #fafafa;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: rgb(180, 115, 35);
+            box-shadow: 0 0 6px rgba(228, 168, 89, 0.4);
+            background-color: #ffffff;
+        }
+
+        .kontakt .btn-custom {
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+        }
+
+        /* 3. LÁBLÉC: AUTOMATIKUSAN ALUL MARAD */
+        .lablec {
+            background-color: burlywood;
+            color: antiquewhite;
+            text-align: center;
+            padding: 22px 20px;
+            margin-top: auto; /* Mindig az aljára igazítja */
+            font-size: 15px;
+            border-top: 2px solid rgb(228, 168, 89);
+            box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.15); 
+        }
+
+        .apro {
+            font-size: 13px;
+            color: #ffffff;
+        }
