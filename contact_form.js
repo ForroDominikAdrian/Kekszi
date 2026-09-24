@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    // Itt a valasztottKod változóba mentjük az értéket
     const valasztottKod = urlParams.get('szolgaltatas');
 
     const szolgaltatasok = {
@@ -18,11 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
         p12: "UX/UI Tervezési Szolgáltatások"
     };
 
-    // Itt is a valasztottKod-ot vizsgáljuk
-    if (valasztottKod) {
-        const inputMezo = document.getElementById('szolgaltatasInput');
-        if (inputMezo) {
-            inputMezo.value = szolgaltatasok[valasztottKod] || valasztottKod;
+    const nevInput = document.getElementById('nev');
+    const emailInput = document.getElementById('email');
+    const szolgaltatasInput = document.getElementById('szolgaltatasInput');
+
+    try {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+        if (isLoggedIn && currentUser) {
+            if (currentUser.name && nevInput) {
+                nevInput.value = currentUser.name;
+            }
+
+            if (currentUser.email && emailInput) {
+                emailInput.value = currentUser.email;
+            }
         }
+    } catch (error) {
+        console.warn('A felhasználói adatok olvasása sikertelen:', error);
+    }
+
+    if (valasztottKod && szolgaltatasInput) {
+        szolgaltatasInput.value = szolgaltatasok[valasztottKod] || valasztottKod;
     }
 });
