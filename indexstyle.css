@@ -2,7 +2,6 @@
             height: 100%;
         }
 
-        /* 1. FLEXBOX AZ EGÉSZ OLDALRA A RÖGZÍTÉSHEZ */
         body {
             background-color: antiquewhite;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -10,7 +9,7 @@
             color: #333;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Teljes képernyőmagasság */
+            min-height: 100vh;
         }
 
         header {
@@ -26,9 +25,9 @@
         .btn-custom {
             background-color: antiquewhite;
             border: 2px solid rgb(228, 168, 89);
-            color: rgb(228, 168, 89);
+            color: rgb(180, 115, 35);
             font-weight: bold;
-            padding: 12px 20px;
+            padding: 10px 18px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 15px;
@@ -39,59 +38,50 @@
 
         .btn-custom:hover {
             background-color: rgb(228, 168, 89);
-            color: antiquewhite;
+            color: #ffffff;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
         }
 
-        /* --- FÜLEK (BEJELENTKEZÉS / REGISZTRÁCIÓ GOMBOK) STÍLUSA --- */
         .nav-pills .nav-link {
-            background-color: antiquewhite;
+            background-color: #fdf5e6;
             border: 2px solid rgb(228, 168, 89);
             color: rgb(180, 115, 35);
             font-weight: bold;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 10px 15px;
-            transition: all 0.3s ease;
-            margin: 0 4px;
+            transition: all 0.2s ease;
+            margin: 0 3px;
         }
 
         .nav-pills .nav-link:hover {
-            background-color: rgb(228, 168, 89);
-            color: antiquewhite;
+            background-color: rgba(228, 168, 89, 0.2);
+            color: rgb(150, 90, 25);
         }
 
         .nav-pills .nav-link.active {
             background-color: rgb(228, 168, 89) !important;
-            color: antiquewhite !important;
+            color: #ffffff !important;
             border-color: rgb(228, 168, 89) !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
         }
 
-        /* 2. KÖZÉPSŐ RÉSZ: KITÖLTI A MARADÉK HELYET */
         .kontakt {
             background-color: antiquewhite;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 40px 20px;
-            flex: 1; /* Ez tolja le a footert az oldal aljára */
+            flex: 1;
         }
 
         .kontakt-container {
             background-color: #ffffff;
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 2px solid rgb(228, 168, 89);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
             width: 100%;
             max-width: 450px;
-        }
-
-        .kontakt-container h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: rgb(180, 115, 35);
-            text-align: center;
         }
 
         .form-group {
@@ -103,7 +93,7 @@
         .form-group label {
             font-weight: bold;
             margin-bottom: 6px;
-            color: #555;
+            color: #444;
             font-size: 14px;
         }
 
@@ -124,19 +114,34 @@
             background-color: #ffffff;
         }
 
-        .kontakt .btn-custom {
+        .kontakt .btn-submit {
             width: 100%;
             margin-top: 10px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
+            background-color: rgb(228, 168, 89);
+            color: #3d2314;
+            border: 2px solid rgb(228, 168, 89);
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
 
-        /* 3. LÁBLÉC: AUTOMATIKUSAN ALUL MARAD */
+        .kontakt .btn-submit:hover {
+            background-color: rgb(180, 115, 35);
+            border-color: rgb(180, 115, 35);
+            color: #ffffff;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
         .lablec {
             background-color: burlywood;
             color: antiquewhite;
             text-align: center;
             padding: 22px 20px;
-            margin-top: auto; /* Mindig az aljára igazítja */
+            margin-top: auto;
             font-size: 15px;
             border-top: 2px solid rgb(228, 168, 89);
             box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.15); 

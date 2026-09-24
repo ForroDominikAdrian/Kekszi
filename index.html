@@ -7,30 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <title>Kekszi - Bejelentkezés & Regisztráció</title>
     <link rel="stylesheet" href="indexstyle.css">
-    <script src="script.js"></script>
-    
 </head>
 <body>
 
-   <header class="d-flex align-items-center justify-content-between px-4" id="tetejere">
-    <!-- Bal oldal: Logo + Menü -->
-    <div class="d-flex align-items-center">
-        <a href="rolunk.html"><img src="Kepek/Kekszi.png" alt="Logo" width="100" class="me-3"></a>
-        <nav class="d-flex gap-2">
-            <a href="rolunk.html" class="btn btn-custom">Rólunk</a>
-            <a href="araink.html" class="btn btn-custom">Szolgáltatásaink</a>
-            <a href="https://milan0419.github.io/tictactoehtml/multi/index.html" class="btn btn-custom">Polibix</a>
-        </nav>
-    </div>
+    <header class="d-flex align-items-center justify-content-between px-4" id="tetejere">
+        <div class="d-flex align-items-center">
+            <a href="rolunk.html"><img src="Kepek/Kekszi.png" alt="Logo" width="100" class="me-3"></a>
+            <nav class="d-flex gap-2">
+                <a href="rolunk.html" class="btn btn-custom">Rólunk</a>
+                <a href="services.html" class="btn btn-custom">Szolgáltatásaink</a>
+                <a href="https://milan0419.github.io/tictactoehtml/multi/index.html" class="btn btn-custom">Polibix</a>
+            </nav>
+        </div>
 
-    <!-- Jobb oldal: Felhasználó fiók állapota (JS tölti ki) -->
-    <div id="userHeader" class="d-flex align-items-center"></div>
-</header>
+        <!-- Bejelentkezett fiók állapota -->
+        <div id="userHeader" class="d-flex align-items-center"></div>
+    </header>
 
     <section class="kontakt">
         <div class="kontakt-container">
             
-            <!-- Váltó gombok: Bejelentkezés / Regisztráció -->
             <ul class="nav nav-pills nav-justified mb-4" id="authTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-pane" type="button" role="tab">Bejelentkezés</button>
@@ -42,7 +38,7 @@
 
             <div class="tab-content" id="authTabContent">
                 
-                <!-- BEJELENTKEZÉS ŰRLAP -->
+                <!-- BEJELENTKEZÉS -->
                 <div class="tab-pane fade show active" id="login-pane" role="tabpanel">
                     <form id="loginForm">
                         <div class="form-group">
@@ -53,11 +49,11 @@
                             <label for="loginJelszo">Jelszó</label>
                             <input type="password" id="loginJelszo" placeholder="••••••••" required>
                         </div>
-                        <button type="submit" class="btn btn-custom">Bejelentkezés</button>
+                        <button type="submit" class="btn btn-submit">Bejelentkezés</button>
                     </form>
                 </div>
 
-                <!-- REGISZTRÁCIÓS ŰRLAP -->
+                <!-- REGISZTRÁCIÓ -->
                 <div class="tab-pane fade" id="register-pane" role="tabpanel">
                     <form id="registerForm">
                         <div class="form-group">
@@ -76,13 +72,12 @@
                             <label for="regJelszo2">Jelszó újra</label>
                             <input type="password" id="regJelszo2" placeholder="••••••••" minlength="6" required>
                         </div>
-                        <button type="submit" class="btn btn-custom">Regisztráció</button>
+                        <button type="submit" class="btn btn-submit">Regisztráció</button>
                     </form>
                 </div>
 
             </div>
 
-            <!-- Visszajelző üzenet helye -->
             <div id="authUzenet" class="mt-3 d-none"></div>
         </div>
     </section>
@@ -94,17 +89,6 @@
     </footer>
 
     <script>
-        function getUsers() {
-            const users = localStorage.getItem('registeredUsers');
-            return users ? JSON.parse(users) : [{ name: "Admin", email: "admin@kekszi.hu", password: "123456" }];
-        }
-
-        function saveUser(newUser) {
-            const users = getUsers();
-            users.push(newUser);
-            localStorage.setItem('registeredUsers', JSON.stringify(users));
-        }
-
         const uzenetDiv = document.getElementById('authUzenet');
 
         function showMessage(text, isSuccess) {
@@ -113,11 +97,37 @@
             uzenetDiv.textContent = text;
         }
 
-        // Regisztráció
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+        // Fejléc frissítése (Szia, Név!)
+        function renderHeader() {
+            const userHeader = document.getElementById('userHeader');
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+            if (currentUser) {
+                userHeader.innerHTML = `
+                    <span class="me-3 fw-bold" style="color: #3d2314; font-size: 15px;">
+                        Szia, ${currentUser.name}!
+                    </span>
+                    <button id="logoutBtn" class="btn btn-custom" style="padding: 6px 12px; font-size: 13px;">
+                        Kijelentkezés
+                    </button>
+                `;
+
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    localStorage.removeItem('currentUser');
+                    renderHeader();
+                });
+            } else {
+                userHeader.innerHTML = '';
+            }
+        }
+
+        renderHeader();
+
+        // REGISZTRÁCIÓ KÜLDÉSE A PHP-NAK
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const nev = document.getElementById('regNev').value.trim();
-            const email = document.getElementById('regEmail').value.trim().toLowerCase();
+            const email = document.getElementById('regEmail').value.trim();
             const jelszo = document.getElementById('regJelszo').value;
             const jelszo2 = document.getElementById('regJelszo2').value;
 
@@ -126,42 +136,55 @@
                 return;
             }
 
-            const users = getUsers();
-            if (users.some(u => u.email === email)) {
-                showMessage('Ezzel az e-mail címmel már regisztráltak!', false);
-                return;
+            try {
+                const response = await fetch('regisztral.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: nev, email: email, password: jelszo })
+                });
+
+                const result = await response.json();
+                showMessage(result.message, result.success);
+
+                if (result.success) {
+                    document.getElementById('registerForm').reset();
+                    setTimeout(() => {
+                        const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
+                        loginTab.show();
+                        document.getElementById('loginEmail').value = email;
+                    }, 1500);
+                }
+            } catch (err) {
+                showMessage('Szerverhiba történt! (Fut a PHP webszerver?)', false);
             }
-
-            saveUser({ name: nev, email: email, password: jelszo });
-            showMessage('Sikeres regisztráció! Átirányítás a bejelentkezéshez...', true);
-            document.getElementById('registerForm').reset();
-
-            setTimeout(() => {
-                const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
-                loginTab.show();
-                document.getElementById('loginEmail').value = email;
-            }, 1500);
         });
 
-        // Bejelentkezés
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        // BEJELENTKEZÉS KÜLDÉSE A PHP-NAK
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const email = document.getElementById('loginEmail').value.trim();
             const jelszo = document.getElementById('loginJelszo').value;
 
-            const users = getUsers();
-            const user = users.find(u => u.email === email && u.password === jelszo);
+            try {
+                const response = await fetch('bejelentkez.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, password: jelszo })
+                });
 
-            if (user) {
-                showMessage(`Üdvözlünk, ${user.name}! Sikeres bejelentkezés.`, true);
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('currentUser', JSON.stringify(user));
+                const result = await response.json();
+                showMessage(result.message, result.success);
 
-                setTimeout(() => {
-                    window.location.href = 'rolunk.html';
-                }, 1500);
-            } else {
-                showMessage('Hibás e-mail cím vagy jelszó!', false);
+                if (result.success) {
+                    localStorage.setItem('currentUser', JSON.stringify(result.user));
+                    renderHeader();
+
+                    setTimeout(() => {
+                        window.location.href = 'rolunk.html';
+                    }, 1500);
+                }
+            } catch (err) {
+                showMessage('Szerverhiba történt! (Fut a PHP webszerver?)', false);
             }
         });
     </script>
