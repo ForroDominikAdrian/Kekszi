@@ -146,3 +146,70 @@
             font-size: 13px;
             color: #ffffff;
         }
+
+        @media (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 12px 16px;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            header > div:first-child {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            header nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            header nav .btn-custom {
+                flex: 1 1 calc(50% - 8px);
+                min-width: 130px;
+                padding: 10px 12px;
+            }
+
+            header img {
+                width: 80px;
+            }
+
+            #userHeader {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-pills {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .nav-pills .nav-link {
+                width: 100%;
+            }
+
+            .kontakt {
+                padding: 24px 14px;
+            }
+
+            .kontakt-container {
+                max-width: 100%;
+                padding: 22px 16px;
+            }
+
+            .kontakt .btn-custom {
+                width: 100%;
+            }
+
+            .lablec {
+                padding: 18px 14px;
+                margin-top: 24px;
+            }
+        }

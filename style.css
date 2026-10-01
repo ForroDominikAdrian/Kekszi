@@ -9,9 +9,10 @@ header {
     background-color: burlywood;
     border-bottom: 2px solid rgb(228, 168, 89);
     height: 100px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); 
-    Position:sticky;
-    top:0;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .btn-custom {
@@ -149,4 +150,66 @@ header {
 .tech-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 12px 16px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    header > div:first-child {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    header nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    header nav .btn-custom {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 130px;
+        padding: 10px 12px;
+        text-align: center;
+    }
+
+    header img {
+        width: 80px;
+    }
+
+    #userHeader {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kontakt {
+        padding: 24px 14px;
+    }
+
+    .kontakt-container {
+        max-width: 100%;
+        padding: 22px 18px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .kontakt .btn-custom {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .lablec {
+        padding: 18px 14px;
+        margin-top: 24px;
+    }
 }
